@@ -59,13 +59,14 @@ public class SortBenchmark {
 
     @Benchmark
     public void bubbleSort() {
+        int[] arr1 = Arrays.copyOf(arr, arr.length);
         int tmp;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length - 1 - i; j++) {
-                if (arr[j] < arr[j+1]) {
-                    tmp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = tmp;
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = 0; j < arr1.length - 1 - i; j++) {
+                if (arr1[j] < arr1[j+1]) {
+                    tmp = arr1[j];
+                    arr1[j] = arr1[j + 1];
+                    arr1[j + 1] = tmp;
                 }
             }
         }
@@ -73,15 +74,16 @@ public class SortBenchmark {
 
     @Benchmark
     public void bubbleSortWithFlag() {
+        int[] arr1 = Arrays.copyOf(arr, arr.length);
         int tmp;
         boolean swap;
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr1.length; i++) {
             swap = false;
-            for (int j = 0; j < arr.length - 1 - i; j++) {
-                if (arr[j] < arr[j+1]) {
-                    tmp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = tmp;
+            for (int j = 0; j < arr1.length - 1 - i; j++) {
+                if (arr1[j] < arr1[j+1]) {
+                    tmp = arr1[j];
+                    arr1[j] = arr1[j + 1];
+                    arr1[j + 1] = tmp;
                     swap = true;
                 }
             }
@@ -92,7 +94,8 @@ public class SortBenchmark {
 
     @Benchmark
     public void quickSort() {
-        Arrays.sort(arr);
+        int[] arr1 = Arrays.copyOf(arr, arr.length);
+        Arrays.sort(arr1);
     }
 
     public static void main(String[] args) throws RunnerException {
