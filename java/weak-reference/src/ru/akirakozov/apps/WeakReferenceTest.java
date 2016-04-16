@@ -17,14 +17,14 @@ public class WeakReferenceTest {
         }
     }
 
-    public static void createBooleanWeakReference() {
+    public static void createIntWeakReference() {
         IntHolder value = new IntHolder(5);
         reference = new WeakReference(value);
     }
 
     @Test
     public void checkLifeCycleOfWeakReference() throws InterruptedException {
-        createBooleanWeakReference();
+        createIntWeakReference();
         Assert.assertEquals(5, reference.get().value);
         System.gc();
         Assert.assertNull(reference.get());
