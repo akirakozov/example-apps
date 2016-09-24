@@ -25,3 +25,4 @@ public class StockClientIntegrationTest {
         Assert.assertEquals(2, infos.size());
     }
 }
+

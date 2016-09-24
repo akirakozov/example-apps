@@ -48,7 +48,8 @@ public class HostReachableRule implements TestRule {
 
         @Override
         public void evaluate() throws Throwable {
-            Assume.assumeTrue("Skipped, because following host is not available at the moment: " + host, false);
+            Assume.assumeTrue("Skipped, because following host " +
+                    "is not available at the moment: " + host, false);
         }
     }
 
