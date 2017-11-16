@@ -62,8 +62,9 @@ public class HostReachableRule implements TestRule {
 
     private static boolean nativePingImpl(String cmd, String host) {
         try {
+            String echoRequestCommand = System.getProperty("os.name").startsWith("Windows") ? "-n" : "-c";
             Process pingProcess
-                    = new ProcessBuilder(cmd, "-c", "1", host).start();
+                    = new ProcessBuilder(cmd, echoRequestCommand, "1", host).start();
             if (!pingProcess.waitFor(TIMEOUT, TimeUnit.MILLISECONDS)) {
                 return false;
             }
