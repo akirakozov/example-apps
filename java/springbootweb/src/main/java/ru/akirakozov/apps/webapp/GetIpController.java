@@ -16,6 +16,6 @@ public class GetIpController {
     public String index(@RequestParam(name = "name", required =  false) String name) throws UnknownHostException {
         String greetingName = name == null ? "guest" : name;
         return "Hi, " + greetingName + "!\n" +
-                "My Ip: " + InetAddress.getLocalHost().getHostAddress();
+                "My Ip: " + InetAddress.getLocalHost().getHostAddress() + "\n";
     }
 }
