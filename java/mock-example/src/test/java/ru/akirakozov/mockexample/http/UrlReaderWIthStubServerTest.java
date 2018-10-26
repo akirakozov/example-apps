@@ -13,6 +13,7 @@ import static com.xebialabs.restito.builder.stub.StubHttp.whenHttp;
 import static com.xebialabs.restito.semantics.Action.status;
 import static com.xebialabs.restito.semantics.Action.stringContent;
 import static com.xebialabs.restito.semantics.Condition.method;
+import static com.xebialabs.restito.semantics.Condition.startsWithUri;
 
 /**
  * @author akirakozov
@@ -25,7 +26,7 @@ public class UrlReaderWIthStubServerTest {
     public void readAsText() {
         withStubServer(PORT, s -> {
             whenHttp(s)
-                    .match(method(Method.GET).startsWithUri("/ping"))
+                    .match(method(Method.GET), startsWithUri("/ping"))
                     .then(stringContent("pong"));
 
             String result = urlReader.readAsText("http://localhost:" + PORT + "/ping");
@@ -38,7 +39,7 @@ public class UrlReaderWIthStubServerTest {
     public void readAsTextWithNotFoundError() {
         withStubServer(PORT, s -> {
             whenHttp(s)
-                    .match(method(Method.GET).startsWithUri("/ping"))
+                    .match(method(Method.GET), startsWithUri("/ping"))
                     .then(status(HttpStatus.NOT_FOUND_404));
 
             urlReader.readAsText("http://localhost:" + PORT + "/ping");
