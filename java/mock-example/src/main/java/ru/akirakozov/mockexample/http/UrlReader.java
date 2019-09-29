@@ -15,7 +15,7 @@ public class UrlReader {
     public String readAsText(String sourceUrl) {
         URL url = toUrl(sourceUrl);
         try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
             String inputLine;
 
             while((inputLine=in.readLine()) != null) {

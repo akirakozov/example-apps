@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class StockResponseParser {
     public List<StockInfo> parseResponse(String response) {
-        String parts[] = response.split("//");
+        String[] parts = response.split("//");
 
         JsonArray entries = (JsonArray) new JsonParser().parse(parts[1]);
         List<StockInfo> infos = new ArrayList<>(entries.size());
