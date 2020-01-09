@@ -12,7 +12,7 @@ import java.util.Map;
 public class Main {
 
     private final static QuestionsRepository questionRepo = new QuestionsRepository();
-    private final static Scores scores = new Scores(new String[]{"Тима&Алиса", "Кирилл&Нина", "Юра&Катя"});
+    private final static Scores scores = new Scores(new String[]{"Антон&Саша", "Юля&Настя"});
     private final static Map<String, JLabel> scoreLabels = new HashMap<>();
 
     public static void main(String[] args) {
@@ -23,14 +23,14 @@ public class Main {
 
         JPanel questionsPanel = new JPanel();
 
-        ArrayList<String> themes = new ArrayList(questionRepo.getThemes());
+        ArrayList<String> themes = new ArrayList<>(questionRepo.getThemes());
         questionsPanel.setLayout(new GridLayout(0, 6));
-        for (int i = 0; i < themes.size(); i++) {
-            JLabel themeLabel = new JLabel(themes.get(i));
+        for (String theme : themes) {
+            JLabel themeLabel = new JLabel(theme);
             themeLabel.setFont(new Font(themeLabel.getFont().getName(), Font.PLAIN, 40));
             questionsPanel.add(themeLabel);
             for (int j = 1; j <= 5; j++) {
-                JButton button = new QuestionButton(themes.get(i), j);
+                JButton button = new QuestionButton(theme, j);
                 questionsPanel.add(button);
                 button.setFont(new Font(button.getFont().getName(), Font.PLAIN, 60));
                 button.addActionListener(createActionListener(frame));
